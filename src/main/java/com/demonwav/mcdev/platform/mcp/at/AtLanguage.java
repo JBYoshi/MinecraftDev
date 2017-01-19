@@ -12,7 +12,7 @@ package com.demonwav.mcdev.platform.mcp.at;
 
 import com.intellij.lang.Language;
 
-public class AtLanguage extends Language{
+public class AtLanguage extends Language {
     private static final AtLanguage instance = new AtLanguage();
 
     public static AtLanguage getInstance() {

@@ -78,7 +78,7 @@ public class McpProjectComponent extends AbstractProjectComponent {
 //                }
 //            });
 //        });
-        
+
         StartupManager.getInstance(myProject).registerPostStartupActivity(() -> {
             final PsiClass aClass = JavaPsiFacade.getInstance(myProject).findClass(ACCESS_TRANSFORMER_CLASS, GlobalSearchScope.allScope(myProject));
             if (aClass == null) {

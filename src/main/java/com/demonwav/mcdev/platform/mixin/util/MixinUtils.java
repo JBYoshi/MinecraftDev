@@ -259,7 +259,7 @@ public final class MixinUtils {
      * Return the PsiAnnotationMemberValue of the given attribute of the Mixin annotation on the provided class. Returns null if the
      * provided class is null, is not a Mixin class, or if the attribute value does not exist.
      *
-     * @param psiClass The PsiClass to check.
+     * @param psiClass  The PsiClass to check.
      * @param attribute The attribute to look for.
      * @return The {@code value} PsiAnnotationMemberValue targets of the provided Mixin class.
      */

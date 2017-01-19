@@ -46,7 +46,7 @@ public class ColorLineMarkerProvider implements LineMarkerProvider {
             return null;
         }
 
-        ColorInfo info =  ColorUtil.findColorFromElement(element, (map, chosen) -> new ColorInfo(element, chosen.getValue(), map));
+        ColorInfo info = ColorUtil.findColorFromElement(element, (map, chosen) -> new ColorInfo(element, chosen.getValue(), map));
         if (info != null) {
             NavigateAction.setNavigateAction(info, "Change color", null);
         }
@@ -64,28 +64,28 @@ public class ColorLineMarkerProvider implements LineMarkerProvider {
 
         public ColorInfo(@NotNull final PsiElement element, @NotNull final Color color, @NotNull Map<String, Color> map) {
             super(
-                    element,
-                    element.getTextRange(),
-                    new ColorIcon(12, color),
-                    Pass.UPDATE_ALL,
-                    FunctionUtil.<Object, String>nullConstant(),
-                    (mouseEvent, psiElement) -> {
-                        if (!psiElement.isWritable()) {
-                            return;
-                        }
+                element,
+                element.getTextRange(),
+                new ColorIcon(12, color),
+                Pass.UPDATE_ALL,
+                FunctionUtil.<Object, String>nullConstant(),
+                (mouseEvent, psiElement) -> {
+                    if (!psiElement.isWritable()) {
+                        return;
+                    }
 
-                        final Editor editor = PsiUtilBase.findEditor(element);
-                        if (editor == null) {
-                            return;
-                        }
+                    final Editor editor = PsiUtilBase.findEditor(element);
+                    if (editor == null) {
+                        return;
+                    }
 
-                        ColorPicker picker = new ColorPicker(map, editor.getComponent());
-                        final String newColor = picker.showDialog();
-                        if (newColor != null) {
-                            ColorUtil.setColorTo(element, newColor);
-                        }
-                    },
-                    GutterIconRenderer.Alignment.RIGHT
+                    ColorPicker picker = new ColorPicker(map, editor.getComponent());
+                    final String newColor = picker.showDialog();
+                    if (newColor != null) {
+                        ColorUtil.setColorTo(element, newColor);
+                    }
+                },
+                GutterIconRenderer.Alignment.RIGHT
             );
             this.color = color;
         }

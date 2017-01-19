@@ -119,7 +119,7 @@ public class BukkitModule<T extends BukkitModuleType> extends AbstractModule {
     @Override
     public String writeErrorMessageForEventParameter(PsiClass eventClass, PsiMethod method) {
         return "Parameter is not a subclass of org.bukkit.event.Event\n" +
-                "Compiling and running this listener may result in a runtime exception";
+            "Compiling and running this listener may result in a runtime exception";
     }
 
     @Override
@@ -136,7 +136,7 @@ public class BukkitModule<T extends BukkitModuleType> extends AbstractModule {
                                                  @NotNull String chosenName,
                                                  @Nullable GenerationData data) {
         BukkitGenerationData bukkitData = (BukkitGenerationData) data;
-        assert  bukkitData != null;
+        assert bukkitData != null;
 
         final PsiMethod method = generateBukkitStyleEventListenerMethod(
             containingClass,

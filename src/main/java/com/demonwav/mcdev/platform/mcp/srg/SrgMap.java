@@ -106,7 +106,7 @@ public final class SrgMap {
         if (field == null) {
             return null;
         }
-        final BiMap<String , String> inverse = fieldMap.inverse();
+        final BiMap<String, String> inverse = fieldMap.inverse();
         return inverse.get(field);
     }
 
@@ -237,7 +237,7 @@ public final class SrgMap {
     @Nullable
     public static PsiMethod fromConstructorString(@NotNull String string, @NotNull PsiClass psiClass) {
         final PsiMethod[] constructors = psiClass.getConstructors();
-        if (constructors .length == 0) {
+        if (constructors.length == 0) {
             return null;
         }
 

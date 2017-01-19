@@ -77,7 +77,7 @@ public class ForgeModule extends AbstractModule {
 
     @Override
     public boolean isEventClassValid(PsiClass eventClass, PsiMethod method) {
-        if (method == null ) {
+        if (method == null) {
             return ForgeConstants.FML_EVENT.equals(eventClass.getQualifiedName()) ||
                 ForgeConstants.EVENT.equals(eventClass.getQualifiedName());
         }
@@ -102,11 +102,11 @@ public class ForgeModule extends AbstractModule {
 
         if (annotation != null) {
             return "Parameter is not a subclass of net.minecraftforge.fml.common.event.FMLEvent\n" +
-                    "Compiling and running this listener may result in a runtime exception";
+                "Compiling and running this listener may result in a runtime exception";
         }
 
         return "Parameter is not a subclass of net.minecraftforge.fml.common.eventhandler.Event\n" +
-                "Compiling and running this listener may result in a runtime exception";
+            "Compiling and running this listener may result in a runtime exception";
     }
 
     @Override

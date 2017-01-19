@@ -65,7 +65,7 @@ public final class ShadowError {
     }
 
     public static final class Builder {
-        private  Key key;
+        private Key key;
         private final List<Object> errorContextInfos = Lists.newArrayList();
         private Level level = Level.ERROR;
 
@@ -347,6 +347,7 @@ public final class ShadowError {
 
     private static abstract class ShadowFix extends InspectionGadgetsFix {
         private final String name;
+
         public ShadowFix(String name) {
             this.name = name;
         }

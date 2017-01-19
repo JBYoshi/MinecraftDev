@@ -98,7 +98,7 @@ public class ForgeProjectSettingsWizard extends MinecraftModuleWizardStep {
         }
 
         mainClassField.setText(this.creator.getGroupId().toLowerCase() + '.' + this.creator.getArtifactId().toLowerCase()
-                + '.' + WordUtils.capitalize(this.creator.getArtifactId()));
+            + '.' + WordUtils.capitalize(this.creator.getArtifactId()));
 
         if (creator.getSettings().size() > 1) {
             mainClassField.setText(mainClassField.getText() + PlatformType.FORGE.getNormalName());

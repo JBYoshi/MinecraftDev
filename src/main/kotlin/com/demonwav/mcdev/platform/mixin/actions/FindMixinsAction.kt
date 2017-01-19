@@ -53,18 +53,18 @@ class FindMixinsAction : AnAction() {
 
                 val classes = ApplicationManager.getApplication().acquireReadActionLock().use {
                     val mixinAnnotation = JavaPsiFacade.getInstance(project).findClass(MixinConstants.Annotations.MIXIN,
-                            GlobalSearchScope.allScope(project)) ?: return@use null
+                        GlobalSearchScope.allScope(project)) ?: return@use null
 
                     // Check all classes with the Mixin annotation
                     val classes = AnnotatedElementsSearch.searchPsiClasses(mixinAnnotation,
-                            GlobalSearchScope.projectScope(project))
-                            .filter {
-                                indicator.text = "Checking ${it.name}..."
+                        GlobalSearchScope.projectScope(project))
+                        .filter {
+                            indicator.text = "Checking ${it.name}..."
 
-                                MixinUtils.getAllMixedClasses(it).values.any { c ->
-                                    c.qualifiedName == classOfElement
-                                }
+                            MixinUtils.getAllMixedClasses(it).values.any { c ->
+                                c.qualifiedName == classOfElement
                             }
+                        }
 
                     when (classes.size) {
                         0 -> null
@@ -72,7 +72,7 @@ class FindMixinsAction : AnAction() {
                         else ->
                             // Sort classes
                             classes.sortedBy {
-                                val pair = getNameOfClass(it)?: return@sortedBy null
+                                val pair = getNameOfClass(it) ?: return@sortedBy null
                                 pair.second.name + pair.first
                             }
                     }

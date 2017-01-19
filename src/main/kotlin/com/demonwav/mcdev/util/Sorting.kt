@@ -67,6 +67,6 @@ fun sortVersions(versions: Collection<*>): List<String> {
     intList.sortWith(REVERSE_LEXICOGRAPHICAL_ORDER)
     intList.removeIf { ints -> LEXICOGRAPHICAL_ORDER.compare(ints, ARRAY_1_8_8) < 0 }
 
-    return intList.stream().map{ ints -> Arrays.stream(ints).mapToObj(Int::toString).collect(Collectors.joining(".")) }
+    return intList.stream().map { ints -> Arrays.stream(ints).mapToObj(Int::toString).collect(Collectors.joining(".")) }
         .collect(Collectors.toList<String>())
 }

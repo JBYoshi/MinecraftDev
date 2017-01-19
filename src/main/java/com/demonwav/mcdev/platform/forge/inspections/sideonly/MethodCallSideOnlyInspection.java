@@ -256,7 +256,7 @@ public class MethodCallSideOnlyInspection extends BaseInspection {
             @Override
             String getErrorString(Object... infos) {
                 return "Method declared in a class annotated with " + infos[0] +
-                        " cannot be referenced in a method annotated with " + infos[1] + ".";
+                    " cannot be referenced in a method annotated with " + infos[1] + ".";
             }
         },
         ANNOTATED_METHOD_IN_CROSS_ANNOTATED_CLASS_METHOD {
@@ -269,7 +269,7 @@ public class MethodCallSideOnlyInspection extends BaseInspection {
             @Override
             String getErrorString(Object... infos) {
                 return "Method declared in a class annotated with " + infos[0] +
-                        " cannot be referenced in a class annotated with " + infos[1] + ".";
+                    " cannot be referenced in a class annotated with " + infos[1] + ".";
             }
         };
 

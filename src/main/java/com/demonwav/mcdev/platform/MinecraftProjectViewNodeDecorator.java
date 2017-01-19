@@ -69,8 +69,8 @@ public class MinecraftProjectViewNodeDecorator implements ProjectViewNodeDecorat
             }
 
             final List<AbstractModuleType<?>> validTypes = minecraftModule.getTypes().stream()
-                    .filter(AbstractModuleType::hasIcon)
-                    .collect(Collectors.toList());
+                .filter(AbstractModuleType::hasIcon)
+                .collect(Collectors.toList());
             if (validTypes.isEmpty()) {
                 continue;
             }

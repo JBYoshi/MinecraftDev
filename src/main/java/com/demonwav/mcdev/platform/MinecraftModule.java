@@ -192,7 +192,7 @@ public final class MinecraftModule {
     public boolean isEventClassValid(@NotNull PsiClass eventClass, @NotNull PsiMethod method) {
         for (AbstractModule abstractModule : modules.values()) {
             boolean good = abstractModule.getModuleType().getListenerAnnotations().stream()
-                    .anyMatch(listenerAnnotation -> method.getModifierList().findAnnotation(listenerAnnotation) != null);
+                .anyMatch(listenerAnnotation -> method.getModifierList().findAnnotation(listenerAnnotation) != null);
 
             if (good) {
                 return abstractModule.isEventClassValid(eventClass, method);
@@ -204,7 +204,7 @@ public final class MinecraftModule {
     public String writeErrorMessageForEvent(@NotNull PsiClass eventClass, @NotNull PsiMethod method) {
         for (AbstractModule abstractModule : modules.values()) {
             boolean good = abstractModule.getModuleType().getListenerAnnotations().stream()
-                    .anyMatch(listenerAnnotation -> method.getModifierList().findAnnotation(listenerAnnotation) != null);
+                .anyMatch(listenerAnnotation -> method.getModifierList().findAnnotation(listenerAnnotation) != null);
 
             if (good) {
                 return abstractModule.writeErrorMessageForEventParameter(eventClass, method);

@@ -82,12 +82,12 @@ public class GenerateEventListenerHandler extends GenerateMembersHandlerBase {
         }
 
         TreeClassChooser chooser = TreeClassChooserFactory.getInstance(project)
-                .createWithInnerClassesScopeChooser(RefactoringBundle.message("choose.destination.class"),
-                        GlobalSearchScope.moduleWithDependenciesAndLibrariesScope(moduleForPsiElement, false),
-                        aClass1 ->
-                                isSuperEventListenerAllowed(aClass1, minecraftModule),
-                        null
-                );
+            .createWithInnerClassesScopeChooser(RefactoringBundle.message("choose.destination.class"),
+                GlobalSearchScope.moduleWithDependenciesAndLibrariesScope(moduleForPsiElement, false),
+                aClass1 ->
+                    isSuperEventListenerAllowed(aClass1, minecraftModule),
+                null
+            );
 
         chooser.showDialog();
         chosenClass = chooser.getSelected();

@@ -65,9 +65,9 @@ public class LiteLoaderTemplate extends AbstractTemplate {
         }
 
         final Properties gradleProps = new Properties();
-        gradleProps .setProperty("VERSION", modVersion);
-        gradleProps .setProperty("MC_VERSION", mcVersion);
-        gradleProps .setProperty("MCP_MAPPINGS", mcpMappings);
+        gradleProps.setProperty("VERSION", modVersion);
+        gradleProps.setProperty("MC_VERSION", mcVersion);
+        gradleProps.setProperty("MCP_MAPPINGS", mcpMappings);
 
         try {
             applyTemplate(project, prop, MinecraftFileTemplateGroupFactory.LITELOADER_GRADLE_PROPERTIES_TEMPLATE, gradleProps);

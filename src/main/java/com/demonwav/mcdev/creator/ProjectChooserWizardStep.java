@@ -56,32 +56,32 @@ public class ProjectChooserWizardStep extends ModuleWizardStep {
     private JCheckBox neptunePluginCheckBox;
 
     @NotNull private static final String bukkitInfo = "Create a standard " +
-            "<a href=\"http://bukkit.org/\">Bukkit</a> plugin, for use " +
-            "on CraftBukkit, Spigot, and Paper servers.";
+        "<a href=\"http://bukkit.org/\">Bukkit</a> plugin, for use " +
+        "on CraftBukkit, Spigot, and Paper servers.";
     @NotNull private static final String spigotInfo = "Create a standard " +
-            "<a href=\"https://www.spigotmc.org/\">Spigot</a> plugin, for use " +
-            "on Spigot and Paper servers.";
+        "<a href=\"https://www.spigotmc.org/\">Spigot</a> plugin, for use " +
+        "on Spigot and Paper servers.";
     @NotNull private static final String paperInfo = "Create a standard " +
-            "<a href=\"https://paper.emc.gs\">Paper</a> plugin, for use " +
-            "on Paper servers.";
+        "<a href=\"https://paper.emc.gs\">Paper</a> plugin, for use " +
+        "on Paper servers.";
     @NotNull private static final String bungeeCordInfo = "Create a standard " +
-            "<a href=\"https://www.spigotmc.org/wiki/bungeecord/\">BungeeCord</a> plugin, for use " +
-            "on BungeeCord servers.";
+        "<a href=\"https://www.spigotmc.org/wiki/bungeecord/\">BungeeCord</a> plugin, for use " +
+        "on BungeeCord servers.";
     @NotNull private static final String spongeInfo = "Create a standard " +
-            "<a href=\"https://www.spongepowered.org/\">Sponge</a> plugin, for use " +
-            "on Sponge servers.";
+        "<a href=\"https://www.spongepowered.org/\">Sponge</a> plugin, for use " +
+        "on Sponge servers.";
     @NotNull private static final String forgeInfo = "Create a standard " +
-            "<a href=\"http://files.minecraftforge.net/\">Forge</a> mod, for use " +
-            "on Forge servers and clients.";
+        "<a href=\"http://files.minecraftforge.net/\">Forge</a> mod, for use " +
+        "on Forge servers and clients.";
     @NotNull private static final String liteLoaderInfo = "Create a standard " +
-            "<a href=\"http://www.liteloader.com/\">LiteLoader</a> mod, for use " +
-            "on LiteLoader clients.";
+        "<a href=\"http://www.liteloader.com/\">LiteLoader</a> mod, for use " +
+        "on LiteLoader clients.";
     @NotNull private static final String canaryInfo = "Create a standard " +
-            "<a href=\"https://canarymod.net/\">Canary</a> plugin, for use " +
-            "on CanaryMod and Neptune servers.";
+        "<a href=\"https://canarymod.net/\">Canary</a> plugin, for use " +
+        "on CanaryMod and Neptune servers.";
     @NotNull private static final String neptuneInfo = "Create a standard " +
-            "<a href=\"https://www.neptunepowered.org/\">Neptune</a> plugin, for use " +
-            "on Neptune servers.";
+        "<a href=\"https://www.neptunepowered.org/\">Neptune</a> plugin, for use " +
+        "on Neptune servers.";
 
     public ProjectChooserWizardStep(@NotNull MinecraftProjectCreator creator) {
         super();
@@ -109,39 +109,39 @@ public class ProjectChooserWizardStep extends ModuleWizardStep {
 
         // Set types
         bukkitPluginCheckBox.addActionListener(e ->
-                toggle(bukkitPluginCheckBox, spigotPluginCheckBox, paperPluginCheckBox)
+            toggle(bukkitPluginCheckBox, spigotPluginCheckBox, paperPluginCheckBox)
         );
 
         spigotPluginCheckBox.addActionListener(e ->
-                toggle(spigotPluginCheckBox, bukkitPluginCheckBox, paperPluginCheckBox)
+            toggle(spigotPluginCheckBox, bukkitPluginCheckBox, paperPluginCheckBox)
         );
 
         paperPluginCheckBox.addActionListener(e ->
-                toggle(paperPluginCheckBox, bukkitPluginCheckBox, spigotPluginCheckBox)
+            toggle(paperPluginCheckBox, bukkitPluginCheckBox, spigotPluginCheckBox)
         );
 
         spongePluginCheckBox.addActionListener(e ->
-                fillInInfoPane()
+            fillInInfoPane()
         );
 
         forgeModCheckBox.addActionListener(e ->
-                fillInInfoPane()
+            fillInInfoPane()
         );
 
         liteLoaderModCheckBox.addActionListener(e ->
-                fillInInfoPane()
+            fillInInfoPane()
         );
 
         bungeeCordPluginCheckBox.addActionListener(e ->
-                fillInInfoPane()
+            fillInInfoPane()
         );
 
         canaryPluginCheckBox.addActionListener(e ->
-                toggle(canaryPluginCheckBox, neptunePluginCheckBox)
+            toggle(canaryPluginCheckBox, neptunePluginCheckBox)
         );
 
         neptunePluginCheckBox.addActionListener(e ->
-                toggle(neptunePluginCheckBox, canaryPluginCheckBox)
+            toggle(neptunePluginCheckBox, canaryPluginCheckBox)
         );
 
         spongeIcon.setIcon(PlatformAssets.SPONGE_ICON_2X);

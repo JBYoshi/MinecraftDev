@@ -126,7 +126,7 @@ public class SpongeColorUtil {
 
         try {
             final PsiLiteralExpression expressionOne = (PsiLiteralExpression) expressionList.getExpressions()[0];
-            final PsiLiteralExpression expressionTwo= (PsiLiteralExpression) expressionList.getExpressions()[1];
+            final PsiLiteralExpression expressionTwo = (PsiLiteralExpression) expressionList.getExpressions()[1];
             final PsiLiteralExpression expressionThree = (PsiLiteralExpression) expressionList.getExpressions()[2];
 
             final int one = (int) Math.round(Double.parseDouble(expressionOne.getText()));

@@ -352,6 +352,6 @@ public class MinecraftProjectCreator {
     @Override
     public int hashCode() {
         return Objects.hashCode(root, groupId, artifactId, version, module,
-            buildSystem, settings, sourceDir, resourceDir, testDir,pomFile);
+            buildSystem, settings, sourceDir, resourceDir, testDir, pomFile);
     }
 }

@@ -53,9 +53,9 @@ abstract class MinecraftModuleWizardStep extends ModuleWizardStep {
         } catch (MinecraftSetupException e) {
             String message = e.getError();
             JBPopupFactory.getInstance().createHtmlTextBalloonBuilder(message, MessageType.ERROR, null)
-                    .setFadeoutTime(4000)
-                    .createBalloon()
-                    .show(RelativePoint.getSouthWestOf(e.getJ()), Balloon.Position.below);
+                .setFadeoutTime(4000)
+                .createBalloon()
+                .show(RelativePoint.getSouthWestOf(e.getJ()), Balloon.Position.below);
             return false;
         }
         return true;

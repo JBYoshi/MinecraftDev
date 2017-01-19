@@ -49,7 +49,8 @@ public class FinalInspection extends BaseInspection {
     public BaseInspectionVisitor buildVisitor() {
         return new BaseInspectionVisitor() {
             @Override
-            public void visitAssignmentExpression(PsiAssignmentExpression expression) { final PsiExpression lExpression = expression.getLExpression();
+            public void visitAssignmentExpression(PsiAssignmentExpression expression) {
+                final PsiExpression lExpression = expression.getLExpression();
 
                 if (!(lExpression instanceof PsiReferenceExpression)) {
                     return;

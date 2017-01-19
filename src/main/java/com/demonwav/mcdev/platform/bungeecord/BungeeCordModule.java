@@ -99,7 +99,7 @@ public class BungeeCordModule extends AbstractModule {
     @Override
     public String writeErrorMessageForEventParameter(PsiClass eventClass, PsiMethod method) {
         return "Parameter is not a subclass of net.md_5.bungee.api.plugin.Event\n" +
-                "Compiling and running this listener may result in a runtime exception";
+            "Compiling and running this listener may result in a runtime exception";
     }
 
     @Override

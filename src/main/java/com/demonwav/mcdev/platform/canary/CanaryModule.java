@@ -85,24 +85,25 @@ public class CanaryModule<T extends CanaryModuleType> extends AbstractModule {
     @Override
     public String writeErrorMessageForEventParameter(PsiClass eventClass, PsiMethod method) {
         return "Parameter is not a subclass of " + CanaryConstants.HOOK_CLASS + "\n" +
-                "Compiling and running this listener may result in a runtime exception";
+            "Compiling and running this listener may result in a runtime exception";
     }
+
     @Nullable
     @Override
     public PsiMethod generateEventListenerMethod(@NotNull PsiClass containingClass,
-            @NotNull PsiClass chosenClass,
-            @NotNull String chosenName,
-            @Nullable GenerationData data) {
+                                                 @NotNull PsiClass chosenClass,
+                                                 @NotNull String chosenName,
+                                                 @Nullable GenerationData data) {
         CanaryGenerationData canaryData = (CanaryGenerationData) data;
         assert canaryData != null;
 
         final PsiMethod method = generateCanaryStyleEventListenerMethod(
-                containingClass,
-                chosenClass,
-                chosenName,
-                project,
-                CanaryConstants.HOOK_HANDLER_ANNOTATION,
-                canaryData.isIgnoreCanceled()
+            containingClass,
+            chosenClass,
+            chosenName,
+            project,
+            CanaryConstants.HOOK_HANDLER_ANNOTATION,
+            canaryData.isIgnoreCanceled()
         );
 
         if (!canaryData.getPriority().equals("NORMAL")) {
@@ -113,7 +114,7 @@ public class CanaryModule<T extends CanaryModuleType> extends AbstractModule {
             }
 
             final PsiAnnotationMemberValue value = JavaPsiFacade.getElementFactory(project)
-                    .createExpressionFromText(CanaryConstants.PRIORITY_CLASS + "." + canaryData.getPriority(), annotation);
+                .createExpressionFromText(CanaryConstants.PRIORITY_CLASS + "." + canaryData.getPriority(), annotation);
 
             annotation.setDeclaredAttributeValue("priority", value);
         }
@@ -131,10 +132,10 @@ public class CanaryModule<T extends CanaryModuleType> extends AbstractModule {
 
         final PsiParameterList list = newMethod.getParameterList();
         final PsiParameter parameter = JavaPsiFacade.getElementFactory(project)
-                .createParameter(
-                        "event",
-                        PsiClassType.getTypeByName(chosenClass.getQualifiedName(), project, GlobalSearchScope.allScope(project))
-                );
+            .createParameter(
+                "event",
+                PsiClassType.getTypeByName(chosenClass.getQualifiedName(), project, GlobalSearchScope.allScope(project))
+            );
         list.add(parameter);
 
         final PsiModifierList modifierList = newMethod.getModifierList();

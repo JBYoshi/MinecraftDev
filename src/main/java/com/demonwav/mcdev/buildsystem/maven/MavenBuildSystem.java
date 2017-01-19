@@ -85,7 +85,7 @@ public class MavenBuildSystem extends BuildSystem {
                 String text = null;
 
                 if (configuration.type == PlatformType.BUKKIT || configuration.type == PlatformType.SPIGOT ||
-                        configuration.type == PlatformType.PAPER) {
+                    configuration.type == PlatformType.PAPER) {
                     text = BukkitTemplate.applyPomTemplate(project, getBuildVersion());
                 } else if (configuration.type == PlatformType.BUNGEECORD) {
                     text = BungeeCordTemplate.applyPomTemplate(project, getBuildVersion());
@@ -216,103 +216,102 @@ public class MavenBuildSystem extends BuildSystem {
                         List<MavenProject> mavenProjects = MavenProjectsManager.getInstance(module.getProject()).getProjects();
 
                         mavenProjects.stream()
-                                .filter(p -> p.getFile().getParent().equals(getRootDirectory()))
-                                .findFirst()
-                                .ifPresent(p -> {
+                            .filter(p -> p.getFile().getParent().equals(getRootDirectory()))
+                            .findFirst()
+                            .ifPresent(p -> {
 
-                                    //noinspection ConstantConditions
-                                    setArtifactId(p.getMavenId().getArtifactId());
-                                    //noinspection ConstantConditions
-                                    setGroupId(p.getMavenId().getGroupId());
-                                    //noinspection ConstantConditions
-                                    setVersion(p.getMavenId().getVersion());
+                                //noinspection ConstantConditions
+                                setArtifactId(p.getMavenId().getArtifactId());
+                                //noinspection ConstantConditions
+                                setGroupId(p.getMavenId().getGroupId());
+                                //noinspection ConstantConditions
+                                setVersion(p.getMavenId().getVersion());
 
-                                    setDependencies(p.getDependencies().stream()
-                                                     .map(d -> new BuildDependency(
-                                                         d.getGroupId(),
-                                                         d.getArtifactId(),
-                                                         d.getVersion(),
-                                                         d.getScope()
-                                                     ))
-                                                     .collect(Collectors.toList()));
-                                    setRepositories(p.getRemoteRepositories().stream()
-                                                     .map(r -> new BuildRepository(r.getId(), r.getUrl()))
-                                                     .collect(Collectors.toList()));
+                                setDependencies(p.getDependencies().stream()
+                                    .map(d -> new BuildDependency(
+                                        d.getGroupId(),
+                                        d.getArtifactId(),
+                                        d.getVersion(),
+                                        d.getScope()
+                                    ))
+                                    .collect(Collectors.toList()));
+                                setRepositories(p.getRemoteRepositories().stream()
+                                    .map(r -> new BuildRepository(r.getId(), r.getUrl()))
+                                    .collect(Collectors.toList()));
 
-                                    pomFile = p.getFile();
-                                    setSourceDirectories(p.getSources().stream()
-                                                          .map(LocalFileSystem.getInstance()::findFileByPath)
-                                                          .collect(Collectors.toList()));
+                                pomFile = p.getFile();
+                                setSourceDirectories(p.getSources().stream()
+                                    .map(LocalFileSystem.getInstance()::findFileByPath)
+                                    .collect(Collectors.toList()));
 
-                                    setResourceDirectories(p.getResources().stream()
-                                                            .map(MavenResource::getDirectory)
-                                                            .map(LocalFileSystem.getInstance()::findFileByPath)
-                                                            .collect(Collectors.toList()));
+                                setResourceDirectories(p.getResources().stream()
+                                    .map(MavenResource::getDirectory)
+                                    .map(LocalFileSystem.getInstance()::findFileByPath)
+                                    .collect(Collectors.toList()));
 
-                                    setTestSourcesDirectories(p.getTestSources().stream()
-                                                               .map(LocalFileSystem.getInstance()::findFileByPath)
-                                                               .collect(Collectors.toList()));
+                                setTestSourcesDirectories(p.getTestSources().stream()
+                                    .map(LocalFileSystem.getInstance()::findFileByPath)
+                                    .collect(Collectors.toList()));
 
-                                    setTestResourceDirectories(p.getTestResources().stream()
-                                                                .map(MavenResource::getDirectory)
-                                                                .map(LocalFileSystem.getInstance()::findFileByPath)
-                                                                .collect(Collectors.toList()));
+                                setTestResourceDirectories(p.getTestResources().stream()
+                                    .map(MavenResource::getDirectory)
+                                    .map(LocalFileSystem.getInstance()::findFileByPath)
+                                    .collect(Collectors.toList()));
 
-                                    // Set author and plugin name, if set
-                                    ApplicationManager.getApplication().runReadAction(() -> {
-                                        PsiFile psiPomFile = PsiManager.getInstance(module.getProject()).findFile(pomFile);
-                                        if (psiPomFile instanceof XmlFile) {
-                                            XmlTag rootTag = ((XmlFile) psiPomFile).getRootTag();
+                                // Set author and plugin name, if set
+                                ApplicationManager.getApplication().runReadAction(() -> {
+                                    PsiFile psiPomFile = PsiManager.getInstance(module.getProject()).findFile(pomFile);
+                                    if (psiPomFile instanceof XmlFile) {
+                                        XmlTag rootTag = ((XmlFile) psiPomFile).getRootTag();
 
-                                            if (rootTag != null) {
-                                                XmlTag nameTag = rootTag.findFirstSubTag("name");
+                                        if (rootTag != null) {
+                                            XmlTag nameTag = rootTag.findFirstSubTag("name");
 
-                                                if (nameTag != null) {
-                                                    setPluginName(nameTag.getValue().getText());
+                                            if (nameTag != null) {
+                                                setPluginName(nameTag.getValue().getText());
+                                            }
+
+
+                                            // this is just awful...
+                                            // anyways, find the build version somewhere in there
+                                            XmlTag buildTag = rootTag.findFirstSubTag("build");
+                                            if (buildTag == null) {
+                                                return;
+                                            }
+
+                                            XmlTag pluginsTag = buildTag.findFirstSubTag("plugins");
+                                            if (pluginsTag == null) {
+                                                return;
+                                            }
+
+                                            XmlTag[] pluginTags = pluginsTag.findSubTags("plugin");
+                                            for (XmlTag pluginTag : pluginTags) {
+                                                XmlTag artifactIdTag = pluginTag.findFirstSubTag("artifactId");
+                                                if (artifactIdTag == null) {
+                                                    continue;
                                                 }
 
-
-
-                                                // this is just awful...
-                                                // anyways, find the build version somewhere in there
-                                                XmlTag buildTag = rootTag.findFirstSubTag("build");
-                                                if (buildTag == null) {
-                                                    return;
+                                                if (!artifactIdTag.getValue().getText().equals("maven-compiler-plugin")) {
+                                                    continue;
                                                 }
 
-                                                XmlTag pluginsTag = buildTag.findFirstSubTag("plugins");
-                                                if (pluginsTag == null) {
-                                                    return;
+                                                XmlTag configuration = pluginTag.findFirstSubTag("configuration");
+                                                if (configuration == null) {
+                                                    continue;
                                                 }
 
-                                                XmlTag[] pluginTags = pluginsTag.findSubTags("plugin");
-                                                for (XmlTag pluginTag : pluginTags) {
-                                                    XmlTag artifactIdTag = pluginTag.findFirstSubTag("artifactId");
-                                                    if (artifactIdTag == null) {
-                                                        continue;
-                                                    }
-
-                                                    if (!artifactIdTag.getValue().getText().equals("maven-compiler-plugin")) {
-                                                        continue;
-                                                    }
-
-                                                    XmlTag configuration = pluginTag.findFirstSubTag("configuration");
-                                                    if (configuration == null) {
-                                                        continue;
-                                                    }
-
-                                                    XmlTag sourceTag = configuration.findFirstSubTag("source");
-                                                    if (sourceTag == null) {
-                                                        continue;
-                                                    }
-
-                                                    setBuildVersion(sourceTag.getValue().getText());
-                                                    break;
+                                                XmlTag sourceTag = configuration.findFirstSubTag("source");
+                                                if (sourceTag == null) {
+                                                    continue;
                                                 }
+
+                                                setBuildVersion(sourceTag.getValue().getText());
+                                                break;
                                             }
                                         }
-                                    });
+                                    }
                                 });
+                            });
                     });
                     importPromise.setResult(thisRef);
                 }

@@ -183,7 +183,7 @@ public class LiteLoaderProjectSettingsWizard extends MinecraftModuleWizardStep {
 
         mainClassField.getDocument().removeDocumentListener(listener);
         mainClassField.setText(this.creator.getGroupId() + '.' + this.creator.getArtifactId()
-                + "." + LITEMOD + WordUtils.capitalizeFully(creator.getArtifactId()));
+            + "." + LITEMOD + WordUtils.capitalizeFully(creator.getArtifactId()));
         mainClassField.getDocument().addDocumentListener(listener);
 
         loadingBar.setIndeterminate(true);
@@ -208,9 +208,9 @@ public class LiteLoaderProjectSettingsWizard extends MinecraftModuleWizardStep {
         } catch (MinecraftSetupException e) {
             String message = e.getError();
             JBPopupFactory.getInstance().createHtmlTextBalloonBuilder(message, MessageType.ERROR, null)
-                    .setFadeoutTime(4000)
-                    .createBalloon()
-                    .show(RelativePoint.getSouthWestOf(e.getJ()), Balloon.Position.below);
+                .setFadeoutTime(4000)
+                .createBalloon()
+                .show(RelativePoint.getSouthWestOf(e.getJ()), Balloon.Position.below);
             return false;
         }
 

@@ -77,7 +77,7 @@ public enum PlatformType {
     }
 
     @Nullable
-    public static PlatformType getTypeByName(String name){
+    public static PlatformType getTypeByName(String name) {
         for (PlatformType type : values()) {
             if (type.getName().equals(name)) {
                 return type;

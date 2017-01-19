@@ -96,7 +96,7 @@ public class MinecraftModuleBuilder extends JavaModuleBuilder {
         }
 
         if (ApplicationManager.getApplication().isUnitTestMode()
-                || ApplicationManager.getApplication().isHeadlessEnvironment()) {
+            || ApplicationManager.getApplication().isHeadlessEnvironment()) {
             r.run();
             return;
         }

@@ -66,7 +66,7 @@ public class ColorUtil {
                 // the expression will be the non-fully-qualified class with the enum
                 // So we combine those checks and get this
                 if (entry.getKey().startsWith(type.getCanonicalText()) &&
-                        entry.getKey().endsWith(expression.getCanonicalText())) {
+                    entry.getKey().endsWith(expression.getCanonicalText())) {
                     return function.apply(map, entry);
                 }
             }
@@ -101,7 +101,7 @@ public class ColorUtil {
                 ASTNode node = expression.getNode();
 
                 PsiLiteralExpression literalExpression = (PsiLiteralExpression) JavaPsiFacade.getElementFactory(expression.getProject())
-                        .createExpressionFromText("0x" + Integer.toHexString(value).toUpperCase(), null);
+                    .createExpressionFromText("0x" + Integer.toHexString(value).toUpperCase(), null);
 
                 node.getPsi().replace(literalExpression);
             });
@@ -119,14 +119,14 @@ public class ColorUtil {
 
                 ASTNode nodeOne = expressionOne.getNode();
                 ASTNode nodeTwo = expressionTwo.getNode();
-                ASTNode nodeThree  = expressionThree.getNode();
+                ASTNode nodeThree = expressionThree.getNode();
 
                 PsiExpression literalExpressionOne = JavaPsiFacade.getElementFactory(expressionList.getProject())
-                        .createExpressionFromText(String.valueOf(red), null);
+                    .createExpressionFromText(String.valueOf(red), null);
                 PsiExpression literalExpressionTwo = JavaPsiFacade.getElementFactory(expressionList.getProject())
-                        .createExpressionFromText(String.valueOf(green), null);
+                    .createExpressionFromText(String.valueOf(green), null);
                 PsiExpression literalExpressionThree = JavaPsiFacade.getElementFactory(expressionList.getProject())
-                        .createExpressionFromText(String.valueOf(blue), null);
+                    .createExpressionFromText(String.valueOf(blue), null);
 
                 nodeOne.getPsi().replace(literalExpressionOne);
                 nodeTwo.getPsi().replace(literalExpressionTwo);

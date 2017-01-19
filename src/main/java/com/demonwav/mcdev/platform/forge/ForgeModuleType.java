@@ -31,13 +31,13 @@ public class ForgeModuleType extends AbstractModuleType<ForgeModule> {
 
     private static final String ID = "FORGE_MODULE_TYPE";
     private static final List<String> IGNORED_ANNOTATIONS = ImmutableList.of(
-            ForgeConstants.MOD_ANNOTATION,
-            ForgeConstants.EVENT_HANDLER_ANNOTATION,
-            ForgeConstants.SUBSCRIBE_EVENT_ANNOTATION
+        ForgeConstants.MOD_ANNOTATION,
+        ForgeConstants.EVENT_HANDLER_ANNOTATION,
+        ForgeConstants.SUBSCRIBE_EVENT_ANNOTATION
     );
     private static final List<String> LISTENER_ANNOTATIONS = ImmutableList.of(
-            ForgeConstants.EVENT_HANDLER_ANNOTATION,
-            ForgeConstants.SUBSCRIBE_EVENT_ANNOTATION
+        ForgeConstants.EVENT_HANDLER_ANNOTATION,
+        ForgeConstants.SUBSCRIBE_EVENT_ANNOTATION
     );
 
     private ForgeModuleType() {

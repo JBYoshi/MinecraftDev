@@ -46,6 +46,7 @@ public abstract class AbstractModule {
     }
 
     public abstract AbstractModuleType<?> getModuleType();
+
     public abstract PlatformType getType();
 
     public Icon getIcon() {
@@ -60,7 +61,7 @@ public abstract class AbstractModule {
      * is not going to throw an error at runtime.
      *
      * @param eventClass The PsiClass of the event listener argument
-     * @param method The method of the event listener
+     * @param method     The method of the event listener
      * @return True if the class is valid or ignored. Returning false may highlight the
      *     method as an error and prevent compiling.
      */

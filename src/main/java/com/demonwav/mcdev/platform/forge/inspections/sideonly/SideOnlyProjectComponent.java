@@ -67,8 +67,10 @@ public class SideOnlyProjectComponent extends AbstractProjectComponent {
                                         return true;
                                     }
                                 );
-                            } catch (Exception ignored2) {}// I have no idea, seems like it's a bug with intellij, but I'll catch any
-                                                           // weird exceptions that pop up anyways...
+                            } catch (Exception ignored2) {
+                                // I have no idea, seems like it's a bug with intellij, but I'll catch any
+                                // weird exceptions that pop up anyways...
+                            }
                         }
                     }
                 });

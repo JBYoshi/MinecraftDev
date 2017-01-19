@@ -30,9 +30,9 @@ class MinecraftProjectResolverExtension : AbstractProjectResolverExtension() {
         val model = resolverCtx.getExtraProject(gradleModule, McpModel::class.java)
         if (model != null) {
             val data = McpModelData(ideModule.data, McpModuleSettings.State(
-                    model.minecraftVersion,
-                    model.mcpVersion,
-                    model.mappingFiles
+                model.minecraftVersion,
+                model.mcpVersion,
+                model.mappingFiles
             ))
 
             // Register our data in the module

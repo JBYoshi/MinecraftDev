@@ -123,7 +123,7 @@ public class MethodSideOnlyInspection extends BaseInspection {
                                 method
                             );
                         }
-                        if (returnSide != Side.NONE  && returnSide != Side.INVALID) {
+                        if (returnSide != Side.NONE && returnSide != Side.INVALID) {
                             if (returnSide != classHierarchySide.first) {
 
                                 registerMethodError(

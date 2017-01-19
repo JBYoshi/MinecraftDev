@@ -96,7 +96,8 @@ public class ShadowInspection extends BaseJavaBatchLocalInspectionTool {
             }
         }
 
-        List<ShadowError> errors = info.strategy.validateShadowMemberInMixin(member, mcpModule, info.containingClass, info.shadowAnnotation, info.psiClassMap);
+        List<ShadowError> errors = info.strategy.validateShadowMemberInMixin(member, mcpModule,
+            info.containingClass, info.shadowAnnotation, info.psiClassMap);
 
         return generateProblemDescriptors(errors, identifier);
     }
@@ -170,6 +171,7 @@ public class ShadowInspection extends BaseJavaBatchLocalInspectionTool {
         public final PsiClass containingClass;
         public final PsiAnnotation shadowAnnotation;
         public final Map<PsiElement, PsiClass> psiClassMap;
+
         public Info(RemapStrategy strategy, PsiClass containingClass, PsiAnnotation shadowAnnotation, Map<PsiElement, PsiClass> psiClassMap) {
             this.strategy = strategy;
             this.containingClass = containingClass;
@@ -243,6 +245,7 @@ public class ShadowInspection extends BaseJavaBatchLocalInspectionTool {
             }
         },
         CLASS_NOT_SHADOW_REMAPPED(false, true) { // Shadows are not remapped if the target is not remapped.
+
             @Override
             List<ShadowError> validateShadowMemberInMixin(@NotNull PsiMember member,
                                                           @Nullable McpModule mcpModule,
@@ -281,6 +284,7 @@ public class ShadowInspection extends BaseJavaBatchLocalInspectionTool {
             }
         },
         NONE(false, false) { // Both are not remapped
+
             @Override
             List<ShadowError> validateShadowMemberInMixin(@NotNull PsiMember member,
                                                           @Nullable McpModule mcpModule,

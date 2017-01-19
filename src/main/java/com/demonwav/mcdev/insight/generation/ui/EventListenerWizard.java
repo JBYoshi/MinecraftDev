@@ -33,6 +33,7 @@ public class EventListenerWizard {
     private JSeparator separator;
 
     private static final GridConstraints innerContentPanelConstraints = new GridConstraints();
+
     static {
         innerContentPanelConstraints.setRow(0);
         innerContentPanelConstraints.setColumn(0);

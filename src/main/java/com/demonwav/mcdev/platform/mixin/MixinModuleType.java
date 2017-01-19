@@ -29,24 +29,24 @@ public class MixinModuleType extends AbstractModuleType<MixinModule> {
 
     public static final String ID = "MIXIN_MODULE_TYPE";
     private static final List<String> IGNORED_ANNOTATIONS = ImmutableList.<String>builder()
-            .add(Annotations.DEBUG)
-            .add(Annotations.FINAL)
-            .add(Annotations.IMPLEMENTS)
-            .add(Annotations.INTERFACE)
-            .add(Annotations.INTRINSIC)
-            .add(Annotations.MIXIN)
-            .add(Annotations.MUTABLE)
-            .add(Annotations.OVERWRITE)
-            .add(Annotations.SHADOW)
-            .add(Annotations.SOFT_OVERRIDE)
-            .add(Annotations.UNIQUE)
-            .add(Annotations.INJECT)
-            .add(Annotations.MODIFY_ARG)
-            .add(Annotations.MODIFY_CONSTANT)
-            .add(Annotations.MODIFY_VARIABLE)
-            .add(Annotations.REDIRECT)
-            .add(Annotations.SURROGATE)
-            .build();
+        .add(Annotations.DEBUG)
+        .add(Annotations.FINAL)
+        .add(Annotations.IMPLEMENTS)
+        .add(Annotations.INTERFACE)
+        .add(Annotations.INTRINSIC)
+        .add(Annotations.MIXIN)
+        .add(Annotations.MUTABLE)
+        .add(Annotations.OVERWRITE)
+        .add(Annotations.SHADOW)
+        .add(Annotations.SOFT_OVERRIDE)
+        .add(Annotations.UNIQUE)
+        .add(Annotations.INJECT)
+        .add(Annotations.MODIFY_ARG)
+        .add(Annotations.MODIFY_CONSTANT)
+        .add(Annotations.MODIFY_VARIABLE)
+        .add(Annotations.REDIRECT)
+        .add(Annotations.SURROGATE)
+        .build();
     private static final List<String> LISTENER_ANNOTATIONS = Collections.emptyList();
 
     private MixinModuleType() {

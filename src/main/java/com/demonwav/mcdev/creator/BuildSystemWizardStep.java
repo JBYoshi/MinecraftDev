@@ -63,8 +63,8 @@ public class BuildSystemWizardStep extends ModuleWizardStep {
             return;
         }
         if (creator.getSettings().values().stream().anyMatch(s -> s.type == FORGE) ||
-                creator.getSettings().values().stream().anyMatch(s -> s.type == LITELOADER) ||
-                creator.getSettings().values().stream().anyMatch(s -> s instanceof SpongeForgeProjectConfiguration)) {
+            creator.getSettings().values().stream().anyMatch(s -> s.type == LITELOADER) ||
+            creator.getSettings().values().stream().anyMatch(s -> s instanceof SpongeForgeProjectConfiguration)) {
             buildSystemBox.setSelectedIndex(1);
             buildSystemBox.setVisible(false);
         } else if (creator.getSettings().values().stream().anyMatch(s -> s.type == SPONGE || s.type == CANARY || s.type == NEPTUNE)) {
@@ -116,9 +116,9 @@ public class BuildSystemWizardStep extends ModuleWizardStep {
             }
         } catch (MinecraftSetupException e) {
             JBPopupFactory.getInstance().createHtmlTextBalloonBuilder(e.getError(), MessageType.ERROR, null)
-                    .setFadeoutTime(2000)
-                    .createBalloon()
-                    .show(RelativePoint.getSouthWestOf(e.getJ()), Balloon.Position.below);
+                .setFadeoutTime(2000)
+                .createBalloon()
+                .show(RelativePoint.getSouthWestOf(e.getJ()), Balloon.Position.below);
             return false;
         }
         return true;

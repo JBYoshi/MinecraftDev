@@ -102,6 +102,7 @@ public class MixinLineMarkerProvider extends LineMarkerProviderDescriptor {
                     public String text;
                     public int offset;
                     public Runnable runnable;
+
                     public Data(Icon icon, String text, int offset, Runnable runnable) {
                         this.icon = icon;
                         this.text = text;
@@ -124,12 +125,12 @@ public class MixinLineMarkerProvider extends LineMarkerProviderDescriptor {
 
                 infos.sort(Comparator.comparingInt(o -> o.offset));
                 final JBList<Data> list = new JBList<>(infos);
-                PopupChooserBuilder builder  = JBPopupFactory.getInstance().createListPopupBuilder(list);
+                PopupChooserBuilder builder = JBPopupFactory.getInstance().createListPopupBuilder(list);
                 // Modified Jetbrains code
                 list.installCellRenderer(dom -> {
                     if (dom instanceof Data) {
                         Icon icon = ((Data) dom).icon;
-                        String text = ((Data)dom).text;
+                        String text = ((Data) dom).text;
 
                         final JBLabel label = new JBLabel(text, icon, SwingConstants.LEFT);
                         label.setBorder(IdeBorderFactory.createEmptyBorder(2));

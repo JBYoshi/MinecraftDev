@@ -82,7 +82,7 @@ public class SpongeModule extends AbstractModule {
     @Override
     public String writeErrorMessageForEventParameter(PsiClass eventClass, PsiMethod method) {
         return "Parameter is not an instance of org.spongepowered.api.event.Event\n" +
-        "Compiling and running this listener may result in a runtime exception";
+            "Compiling and running this listener may result in a runtime exception";
     }
 
     @Nullable

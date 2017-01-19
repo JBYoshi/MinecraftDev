@@ -176,7 +176,7 @@ public class ListenerLineMarkerProvider extends LineMarkerProviderDescriptor {
         public String getElementPresentation(PsiElement element) {
             final PsiElement parent = element.getParent();
             if (parent instanceof PsiFunctionalExpression) {
-                return PsiExpressionTrimRenderer.render((PsiExpression)parent);
+                return PsiExpressionTrimRenderer.render((PsiExpression) parent);
             }
             return super.getElementPresentation(element);
         }

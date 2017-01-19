@@ -89,7 +89,7 @@ public abstract class AbstractTemplate {
     }
 
     public static void applySettingsGradleTemplate(@NotNull Project project,
-                                                   @NotNull VirtualFile  file,
+                                                   @NotNull VirtualFile file,
                                                    @NotNull String projectName,
                                                    @NotNull String includes) {
 

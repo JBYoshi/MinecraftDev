@@ -21,7 +21,7 @@ import javax.swing.Icon;
 public class PaperModuleType extends SpigotModuleType {
 
     private static final PaperModuleType instance = new PaperModuleType();
-    
+
     private static final String ID = "PAPER_MODULE_TYPE";
 
     private PaperModuleType() {

@@ -558,8 +558,7 @@ public class GradleBuildSystem extends BuildSystem {
                                     String languageLevelName = data.getLanguageLevel().name();
                                     int index = languageLevelName.lastIndexOf('_') - 1;
                                     if (index != -1) {
-                                        setBuildVersion(languageLevelName
-                                                            .substring(index, languageLevelName.length()).replace("_", "."));
+                                        setBuildVersion(languageLevelName.substring(index, languageLevelName.length()).replace("_", "."));
                                     }
                                 }
                             });
@@ -640,10 +639,10 @@ public class GradleBuildSystem extends BuildSystem {
                 try {
                     // Add settings for the new build system before it creates the module
                     gradleBuildSystem.setRootDirectory(getRootDirectory()
-                                                           .createChildDirectory(this,
-                                                                                 getArtifactId().toLowerCase() + "-" + configuration.type.name()
-                                                                                                                                         .toLowerCase()
-                                                           ));
+                        .createChildDirectory(this,
+                            getArtifactId().toLowerCase() + "-" + configuration.type.name()
+                                .toLowerCase()
+                        ));
 
                     gradleBuildSystem.setArtifactId(getArtifactId());
                     gradleBuildSystem.setGroupId(getGroupId());

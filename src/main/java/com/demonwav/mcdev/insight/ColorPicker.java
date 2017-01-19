@@ -42,7 +42,7 @@ public class ColorPicker {
     private final ColorPickerDialog dialog;
 
     public ColorPicker(@NotNull Map<String, Color> colorMap, @NotNull Component parent) {
-         dialog = new ColorPickerDialog(parent, panel);
+        dialog = new ColorPickerDialog(parent, panel);
 
         this.colorMap = colorMap;
     }
