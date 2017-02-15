@@ -8,12 +8,8 @@
  * MIT License
  */
 
-package com.demonwav.mcdev.platform.mixin.util
+package com.demonwav.mcdev.util
 
-import com.demonwav.mcdev.util.descriptor
-import com.demonwav.mcdev.util.findMethodsByInternalName
-import com.demonwav.mcdev.util.fullQualifiedName
-import com.demonwav.mcdev.util.internalName
 import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiField
 import com.intellij.psi.PsiMethod
@@ -70,8 +66,16 @@ internal fun PsiMethod.getQualifiedMemberReference(owner: PsiClass): MemberRefer
 // Field
 
 @get:Contract(pure = true)
+internal val PsiField.simpleMemberReference
+    get() = MemberReference(name!!)
+
+@get:Contract(pure = true)
 internal val PsiField.memberReference
     get() = MemberReference(name!!, descriptor)
+
+@get:Contract(pure = true)
+internal val PsiField.simpleQualifiedMemberReference
+    get() = MemberReference(name!!, null, containingClass!!.fullQualifiedName)
 
 @get:Contract(pure = true)
 internal val PsiField.qualifiedMemberReference

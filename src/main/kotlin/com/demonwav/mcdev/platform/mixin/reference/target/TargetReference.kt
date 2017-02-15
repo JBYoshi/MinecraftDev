@@ -13,13 +13,14 @@ package com.demonwav.mcdev.platform.mixin.reference.target
 import com.demonwav.mcdev.platform.mixin.reference.MethodReference
 import com.demonwav.mcdev.platform.mixin.reference.MixinReference
 import com.demonwav.mcdev.platform.mixin.util.MixinConstants.Annotations.AT
+import com.demonwav.mcdev.platform.mixin.util.MixinMemberReference
 import com.demonwav.mcdev.platform.mixin.util.findSource
-import com.demonwav.mcdev.platform.mixin.util.getQualifiedMemberReference
 import com.demonwav.mcdev.util.PolyReferenceResolver
 import com.demonwav.mcdev.util.annotationFromArrayValue
 import com.demonwav.mcdev.util.annotationFromValue
 import com.demonwav.mcdev.util.completeToLiteral
 import com.demonwav.mcdev.util.constantStringValue
+import com.demonwav.mcdev.util.getQualifiedMemberReference
 import com.demonwav.mcdev.util.internalName
 import com.demonwav.mcdev.util.mapToArray
 import com.demonwav.mcdev.util.shortName
@@ -151,7 +152,7 @@ internal object TargetReference : PolyReferenceResolver(), MixinReference {
     internal abstract class MethodHandler : QualifiedHandler<PsiMethod>() {
 
         override fun createLookup(targetClass: PsiClass, m: PsiMethod, owner: PsiClass): LookupElementBuilder {
-            return JavaLookupElementBuilder.forMethod(m, m.getQualifiedMemberReference(owner).toString(),
+            return JavaLookupElementBuilder.forMethod(m, MixinMemberReference.toString(m.getQualifiedMemberReference(owner)),
                     PsiSubstitutor.EMPTY, targetClass)
                     .withPresentableText(m.internalName) // Display internal name (e.g. <init> for constructors)
                     .withLookupString(m.internalName) // Allow looking up targets by their method name
